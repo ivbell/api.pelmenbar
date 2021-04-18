@@ -20,7 +20,7 @@ class MailService {
              Доставка: ${order.delivery} <br>
              Имя: ${order.name} <br>
              Телефон: ${order.phone} <br>
-             Адрес: ${order.adress} <br>
+             Адрес доставки: ${order.adress} <br>
              На сумму(<strong>проверьте!</strong>): ${order.sum}`,
     })
   }
