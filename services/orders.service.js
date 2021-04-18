@@ -7,6 +7,11 @@ class OrdersService {
     await MailService.sendOrder(order, createOrder._id)
     return createOrder
   }
+
+  async getAll() {
+    const orders = await Order.find()
+    return orders
+  }
 }
 
 export default new OrdersService()

@@ -9,6 +9,15 @@ class OrdersController {
       return res.status(400).json(e)
     }
   }
+
+  async getAll(req, res) {
+    try {
+      const orders = await OrderService.getAll()
+      return res.json(orders)
+    } catch (e) {
+      return res.status(400).json(e.message)
+    }
+  }
 }
 
 export default new OrdersController()
