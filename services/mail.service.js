@@ -3,7 +3,6 @@ import nodemailer from 'nodemailer'
 class MailService {
   async sendOrder(order, id) {
     const user = {user: 'source@pelmenbar.ru', pass: 'Wp3B4LN47h**5Jz'}
-
     let transporter = nodemailer.createTransport({
       host: 'smtp.beget.com',
       port: 25,
@@ -13,7 +12,6 @@ class MailService {
         pass: user.pass,
       },
     })
-
     await transporter.sendMail({
       from: '"PelmenBar" <source@pelmenbar.ru',
       to: 'bellivan64@gmail.com',
