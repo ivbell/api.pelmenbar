@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import fileUpload from 'express-fileupload'
+import cors from 'cors'
 import CategoriesRouter from './routes/categories.router.js'
 import ProductsRouter from './routes/product.router.js'
 import OrderRouter from './routes/order.router.js'
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 5000
 
 const app = express()
 
+app.use(cors())
 app.use(express.json()) //добавляем чтение json
 app.use(express.static('static'))
 app.use(fileUpload({}))
