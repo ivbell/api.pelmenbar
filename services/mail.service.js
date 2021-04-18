@@ -19,7 +19,7 @@ class MailService {
       html: `Товары: ${order.product} <br>
              Доставка: ${order.delivery} <br>
              Имя: ${order.name} <br>
-             Телефон: ${order.name} <br>
+             Телефон: ${order.phone} <br>
              Адрес: ${order.adress} <br>
              На сумму(<strong>проверьте!</strong>): ${order.sum}`,
     })

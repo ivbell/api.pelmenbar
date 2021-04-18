@@ -6,7 +6,7 @@ class OrdersController {
       const order = await OrderService.create(req.body)
       return res.json({status: true, order})
     } catch (e) {
-      return res.status(400).json(e.message)
+      return res.status(400).json(e)
     }
   }
 }
