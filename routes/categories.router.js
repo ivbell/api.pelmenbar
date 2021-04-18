@@ -9,4 +9,7 @@ CategoriesRouter.get('/categories/:id', CategoriesController.getOne)
 CategoriesRouter.put('/categories', CategoriesController.update)
 CategoriesRouter.delete('/categories/:id', CategoriesController.delete)
 
+
+
+
 export default CategoriesRouter
