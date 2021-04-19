@@ -1,10 +1,12 @@
 import Products from '../model/Products.js'
 import FileService from '../services/file.service.js'
 
+const URL = 'https://safe-bayou-91554.herokuapp.com'
+
 class ProductService {
   async create(product, picture) {
     const fileName = FileService.saveJPG(picture, product.title)
-    const createdProduct = await Products.create({...product, img: '/images/' + fileName})
+    const createdProduct = await Products.create({...product, img: URL + '/images/' + fileName})
     return createdProduct
   }
 
