@@ -28,17 +28,19 @@ class ProductsController {
     }
   }
 
+  async updateFile(req, res) {
+    try {
+      const updateProduct = await ProductService.updateFile(req.body, req.files.img)
+      return res.json({status: true, updateProduct})
+    } catch (e) {
+      return res.status(400).json(e.message)
+    }
+  }
+
   async update(req, res) {
     try {
-      if (req.files.img) {
-        const updateProduct = await ProductService.update(req.body, req.files.img)
-        console.log(req.files.img = false)
-        return res.json({status: true, updateProduct})
-      } else {
-        const updateProduct = await ProductService.update(req.body, req.body.img)
-        console.log('Tut')
-        return res.json({status: true, updateProduct})
-      }
+      const updateProduct = await ProductService.update(req.body)
+      return res.json({status: true, updateProduct})
     } catch (e) {
       return res.status(400).json(e.message)
     }

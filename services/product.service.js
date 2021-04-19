@@ -24,19 +24,30 @@ class ProductService {
     return product
   }
 
-  async update(product, picture) {
+  async updateFile(product, picture) {
     if (!product._id) {
       throw new Error('ID продукта не указан')
     }
-    if (picture){
-      const fileName = FileService.saveJPG(picture, product.title)
-      const updateProduct = await Products.findByIdAndUpdate(product._id, {...product, img: URL + '/images/' + fileName}, {new: true})
-      console.log(picture)
-      return updateProduct
-    }else{
-      const updateProduct = await Products.findByIdAndUpdate(product._id, product, {new: true})
-      return updateProduct
+    const fileName = FileService.saveJPG(picture, product.title)
+    const updateProduct = await Products.findByIdAndUpdate(product._id, {
+      ...product,
+      img: URL + '/images/' + fileName,
+    }, {new: true})
+    return updateProduct
+    // if (picture){
+    //
+    // }else{
+    //   const updateProduct = await Products.findByIdAndUpdate(product._id, product, {new: true})
+    //   return updateProduct
+    // }
+  }
+
+  async update(product) {
+    if (!product._id) {
+      throw new Error('ID продукта не указан')
     }
+    const updateProduct = await Products.findByIdAndUpdate(product._id, product, {new: true})
+    return updateProduct
   }
 
   async delete(id) {
