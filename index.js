@@ -16,6 +16,7 @@ app.use(cors())
 app.use(express.json()) //добавляем чтение json
 app.use(express.static('static'))
 app.use(fileUpload({}))
+
 //Routes
 app.use('/api', CategoriesRouter)
 app.use('/api', ProductsRouter)
