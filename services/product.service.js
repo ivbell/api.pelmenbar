@@ -1,7 +1,8 @@
+import config from 'config'
 import Products from '../model/Products.js'
 import FileService from '../services/file.service.js'
 
-const URL = 'https://safe-bayou-91554.herokuapp.com'
+const URL = config.get('BASE_URL')
 
 class ProductService {
   async create(product, picture) {
