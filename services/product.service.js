@@ -12,8 +12,8 @@ class ProductService {
   }
 
   async getAll() {
-      const products = await Products.find()
-      return products
+    const products = await Products.find()
+    return products
   }
 
   async getOne(id) {
@@ -24,25 +24,32 @@ class ProductService {
     return product
   }
 
-  async update(product) {
-      if (!product._id) {
-        throw new Error('ID продукта не указан')
-      }
+  async update(product, picture) {
+    if (!product._id) {
+      throw new Error('ID продукта не указан')
+    }
+    if (picture){
+      const fileName = FileService.saveJPG(picture, product.title)
+      const updateProduct = await Products.findByIdAndUpdate(product._id, {...product, img: URL + '/images/' + fileName}, {new: true})
+      console.log(picture)
+      return updateProduct
+    }else{
       const updateProduct = await Products.findByIdAndUpdate(product._id, product, {new: true})
       return updateProduct
+    }
   }
 
   async delete(id) {
-      if (!id) {
-        throw new Error('ID не указан')
-      }
-      const product = await Products.findByIdAndDelete(id)
+    if (!id) {
+      throw new Error('ID не указан')
+    }
+    const product = await Products.findByIdAndDelete(id)
 
-      if (product === null) {
-        throw new Error('Продукт не найден')
-      }
+    if (product === null) {
+      throw new Error('Продукт не найден')
+    }
 
-      return product
+    return product
 
   }
 }
