@@ -7,6 +7,7 @@ const Products = new mongoose.Schema({
   price: { type: String, required: true },
   weight: { type: String, required: true },
   popular: { type: Boolean, default: true },
+  GTM: {type: String},
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Categories' },
 })
 
