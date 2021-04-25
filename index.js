@@ -14,7 +14,6 @@ const app = express()
 
 app.use(cors())
 app.use(express.json()) //добавляем чтение json
-app.use(express.static('static'))
 app.use(fileUpload({}))
 
 //Routes
