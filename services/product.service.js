@@ -28,7 +28,7 @@ class ProductService {
     if (!product._id) {
       throw new Error('ID продукта не указан')
     }
-    const fileName = FileService.saveJPG(picture, product.title)
+    const fileName = await FileService.saveJPG(picture, product.title)
     const updateProduct = await Products.findByIdAndUpdate(product._id, {
       ...product,
       img: URL + '/images/' + fileName,
