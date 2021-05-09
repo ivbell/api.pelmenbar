@@ -1,10 +1,11 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import fileUpload from 'express-fileupload'
 import cors from 'cors'
+import express from 'express'
+import fileUpload from 'express-fileupload'
+import mongoose from 'mongoose'
 import CategoriesRouter from './routes/categories.router.js'
-import ProductsRouter from './routes/product.router.js'
+import GetPelmenbarRouter from './routes/get-pelmenbar.router.js'
 import OrderRouter from './routes/order.router.js'
+import ProductsRouter from './routes/product.router.js'
 import UserRouter from './routes/user.router.js'
 
 const URL_DB =
@@ -22,6 +23,7 @@ app.use('/api', CategoriesRouter)
 app.use('/api', ProductsRouter)
 app.use('/api', OrderRouter)
 app.use('/api', UserRouter)
+app.use('/api', GetPelmenbarRouter)
 
 async function startApp() {
 	try {
